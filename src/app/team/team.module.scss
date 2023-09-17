@@ -1,0 +1,26 @@
+@media (max-width: 640px) {
+    .teamContent {
+        grid-template-areas:
+            "teamThumbnail"
+            "ceoAvatar"
+            "teamBrief"
+        ;
+    }
+}
+
+@media (min-width: 640px) { 
+    .teamContent {
+        grid-template-columns: 20% 80%;
+        grid-template-areas:
+        "ceoAvatar teamBrief"
+        ;
+    }
+}
+
+.ceoAvatar {
+    grid-area: ceoAvatar;
+}
+
+.teamBrief {
+    grid-area: teamBrief;
+}

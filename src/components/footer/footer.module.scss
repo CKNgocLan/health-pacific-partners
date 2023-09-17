@@ -1,0 +1,34 @@
+.footerContainer {
+    background-color: #ccc;
+}
+
+@media (max-width: 640px) {
+    .footerContainer {
+        grid-template-columns: 100%;
+        // grid-template-rows: 100%;
+        grid-template-areas:
+            "footerLabels"
+            "footerCopyright"
+        ;
+    }
+}
+
+@media (min-width: 640px) { 
+    .footerContainer {
+        grid-template-columns: 90% 10%;
+        grid-template-areas:
+            "footerLabels footerLogo"
+            "footerCopyright footerLogo"
+        ;
+    }
+}
+
+.footerLabels {
+    grid-area: footerLabels;
+}
+.footerCopyright {
+    grid-area: footerCopyright;
+}
+.footerLogo {
+    grid-area: footerLogo;
+}

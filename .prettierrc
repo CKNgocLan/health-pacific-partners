@@ -1,0 +1,14 @@
+{
+	"arrowParens": "avoid",
+	"bracketSameLine": false,
+	"bracketSpacing": true,
+	"endOfLine": "crlf",
+	"jsxSingleQuote": true,
+	"semi": false,
+	"trailingComma": "es5",
+	"singleQuote": true,
+	"tabWidth": 4,
+	"singleAttributePerLine": false,
+	"useTabs": true,
+	"htmlWhitespaceSensitivity": "css"
+}

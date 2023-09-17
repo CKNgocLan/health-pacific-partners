@@ -1,0 +1,15 @@
+.contactInfoRow {
+    grid-template-columns: 15% 85%;
+    grid-template-areas: "contactIcon contactValue";
+}
+
+.contactInfoIcon {
+    grid-area: contactIcon;
+}
+
+.contactInfoValue {
+    grid-area: contactValue;
+    text-align: justify;
+    margin: auto;
+    margin-left: 0px;
+}
