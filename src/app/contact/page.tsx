@@ -12,8 +12,9 @@ import type { Metadata } from 'next'
 import styles from './contact.module.scss'
 
 const Image = dynamic(() => import('next/image'))
-// const Map = dynamic(() => import('@/components/map'))
+const Map = dynamic(() => import('@/components/map'))
 import MyGoogleMap from '@/components/map/index.migrate'
+import { GOOGLE_MAP_URL } from '@/components/map/map.util'
 
 export const metadata: Metadata = {
 	title: 'Contact us',
@@ -107,15 +108,15 @@ export default function Contact() {
 				</div>
 			</div>
 
-			{/* <div id='map-contact' className='mt-14 mx-1'>
+			<div id='map-contact' className='mt-14 mx-1'>
                 <Map
                     googleMapURL={GOOGLE_MAP_URL}
                     loadingElement={<div style={{ height: `100%` }} />}
                     containerElement={<div style={{ height: `420px` }} />}
                     mapElement={<div style={{ height: `100%` }} />}
                 />
-            </div> */}
-			<MyGoogleMap />
+            </div>
+			{/* <MyGoogleMap /> */}
 		</div>
 	)
 }
