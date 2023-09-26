@@ -19,12 +19,6 @@
         "name": "next"
       }
     ],
-    "types": [
-        "google.maps"
-    ],
-    "typeRoots": [
-        "node_modules/@types",
-    ],
     "paths": {
       "@/*": ["./src/*"]
     }

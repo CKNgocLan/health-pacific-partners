@@ -1,34 +1,55 @@
 'use client'
 
-import { Status, Wrapper } from '@googlemaps/react-wrapper'
 import { CircularProgress } from '@mui/material'
-import MyMapComponent from './MapComponent'
+import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api'
+import { memo, useCallback, useState } from 'react'
 
-const HEAD_QUARTER_CENTER: google.maps.LatLngLiteral = {
-	lat: Number.parseFloat(process.env.NEXT_PUBLIC_GOOGLE_HEAD_QUARTER_LAT),
-	lng: Number.parseFloat(process.env.NEXT_PUBLIC_GOOGLE_HEAD_QUARTER_LNG),
+const containerStyle = {
+	width: '100%',
+	height: '420px',
 }
 
-const zoom = 15
+const center = {
+	lat: Number(process.env.NEXT_PUBLIC_GOOGLE_HEAD_QUARTER_LAT),
+	lng: Number(process.env.NEXT_PUBLIC_GOOGLE_HEAD_QUARTER_LNG),
+}
 
-const render = (status: Status) => {
-	switch (status) {
-		case Status.LOADING:
-			return <CircularProgress />
-		case Status.FAILURE:
-			return <h1>Error</h1>
-		case Status.SUCCESS:
-			return <MyMapComponent center={HEAD_QUARTER_CENTER} zoom={zoom} />
+function MapMigrated() {
+	const { isLoaded } = useJsApiLoader({
+		id: 'google-map-script',
+		googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY,
+	})
+
+	const [map, setMap] = useState<google.maps.Map | null>(null)
+
+	const onLoad = useCallback(function callback(map: google.maps.Map) {
+		// This is just an example of getting and using the map instance!!! don't just blindly copy!
+		const bounds = new window.google.maps.LatLngBounds(center)
+		map.fitBounds(bounds)
+
+		setMap(map)
+	}, [])
+
+	const onUnmount = useCallback(function callback(_map: google.maps.Map) {
+		setMap(null)
+	}, [])
+
+	if (!isLoaded) {
+		return <CircularProgress />
 	}
+
+	return (
+		<GoogleMap
+			mapContainerStyle={containerStyle}
+			center={center}
+			zoom={10}
+			onLoad={onLoad}
+			onUnmount={onUnmount}
+		>
+			<Marker position={center} title='Health Pacific Partners' />
+			<h1>Test</h1>
+		</GoogleMap>
+	)
 }
 
-const GoogleMap = () => (
-	<Wrapper
-		apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY}
-		render={render}
-	>
-		<MyMapComponent center={HEAD_QUARTER_CENTER} zoom={zoom} />
-	</Wrapper>
-)
-
-export default GoogleMap
+export default memo(MapMigrated)

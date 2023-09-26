@@ -4,16 +4,16 @@ import thumbnailSrc from 'public/images/our-contact.jpg'
 
 // Google Map Implementation
 import {
-    LinkedInIcon,
-    MailOutlineIcon,
-    PhoneInTalkIcon,
+	LinkedInIcon,
+	MailOutlineIcon,
+	PhoneInTalkIcon,
 } from '@/components/icon'
 import type { Metadata } from 'next'
 import styles from './contact.module.scss'
 
 const Image = dynamic(() => import('next/image'))
 // const Map = dynamic(() => import('@/components/map'))
-import MyGoogleMap from '@/components/map/index.migrate'
+import MapMigrated from '@/components/map/index.migrate'
 
 export const metadata: Metadata = {
 	title: 'Contact us',
@@ -115,7 +115,7 @@ export default function Contact() {
                     mapElement={<div style={{ height: `100%` }} />}
                 />
             </div> */}
-			<MyGoogleMap />
+			<MapMigrated />
 		</div>
 	)
 }
