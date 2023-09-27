@@ -1,7 +1,0 @@
-User-Agent: Googlebot
-Disallow: /nogooglebot/
-
-User-Agent: *
-Allow: /
-
-Sitemap: https://pet-shop-clara.vercel.app/sitemap.xml
